@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
-  const url = `${process.env.PRIVATE_API_URL}/api/open-agi/get-all-sessions`;
+  const url = `${process.env.PRIVATE_API_URL}/api/strapi-chat/get-all-sessions`;
   const token = process.env.PRIVATE_API_TOKEN;
 
   try {

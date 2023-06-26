@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
 
-  const url = `${process.env.PRIVATE_API_URL}/api/open-agi/memory-chat`;
+  const url = `${process.env.PRIVATE_API_URL}/api/strapi-chat/chat`;
   const token = process.env.PRIVATE_API_TOKEN;
   const data = await request.json();
 

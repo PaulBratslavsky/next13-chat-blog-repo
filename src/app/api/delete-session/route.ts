@@ -4,12 +4,12 @@ export async function POST(request: Request) {
   const { searchParams } = new URL(request.url);
   const sessionId = searchParams.get("sessionId");
 
-  const url = `${process.env.PRIVATE_API_URL}/api/open-agi/delete-session-by-id/${sessionId}`;
+  const url = `${process.env.PRIVATE_API_URL}/api/strapi-chat/delete-session-by-id/${sessionId}`;
   const token = process.env.PRIVATE_API_TOKEN;
 
   try {
     const response = await fetch(url, {
-      method: "POST",
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,

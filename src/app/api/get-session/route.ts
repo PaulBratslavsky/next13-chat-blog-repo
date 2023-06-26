@@ -5,7 +5,7 @@ export async function GET(request: Request) {
   const sessionId = searchParams.get("sessionId");
   console.log(sessionId, "sessionId");
 
-  const url = `${process.env.PRIVATE_API_URL}/api/open-agi/get-session-by-id/${sessionId}`;
+  const url = `${process.env.PRIVATE_API_URL}/api/strapi-chat/get-session-by-id/${sessionId}`;
   const token = process.env.PRIVATE_API_TOKEN;
 
   try {

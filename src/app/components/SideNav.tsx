@@ -3,9 +3,11 @@ import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import StartNewChatButton from "./StartNewChatButton";
 import { apiRequest } from "../utils/api-functions";
+import { useRouter } from "next/navigation";
 
 
 export default function SideNav() {
+  const router = useRouter();
   const [data, setData] = useState<any[]>([]);
 
   const getSession = useCallback(async () => {
@@ -13,10 +15,11 @@ export default function SideNav() {
     setData(data.data);
   }, []);
 
-  const deleteSession = useCallback(async (sessionId: string) => {
+  const deleteSession = useCallback(async (sessionId: string, router: any ) => {
     await apiRequest(`/api/delete-session?sessionId=${sessionId}`, { method: "POST" });
     alert("Session deleted");
     await getSession();
+    router.push("/");
   }, []);
 
   useEffect(() => {
@@ -36,7 +39,7 @@ export default function SideNav() {
                   <Link href={`${session}`}>Session {session.slice(0,8)}</Link>
                   <button
                     className="border border-slate-300 text-slate-300 text-xs rounded-md py-1 px-2"
-                    onClick={() => deleteSession(session)}
+                    onClick={() => deleteSession(session, router)}
                   >
                     Delete
                   </button>
