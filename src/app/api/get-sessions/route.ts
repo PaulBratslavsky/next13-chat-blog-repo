@@ -25,8 +25,6 @@ export async function GET(request: Request) {
   } catch (error) {
     console.error(error);
   }
-  // const product = await res.json();
-
 }
 
 
